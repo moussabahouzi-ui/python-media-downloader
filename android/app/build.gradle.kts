@@ -1,3 +1,4 @@
+import java.util.Properties
 plugins {
     id("com.android.application")
     id("dev.flutter.flutter-gradle-plugin")
@@ -64,7 +65,7 @@ android {
         create("release") {
             val keyProps = file("key.properties")
             if (keyProps.exists()) {
-                val props = java.util.Properties()
+                val props = Properties()
                 keyProps.inputStream().use { props.load(it) }
                 storeFile = file(props.getProperty("storeFile"))
                 storePassword = props.getProperty("storePassword")
