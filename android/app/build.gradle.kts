@@ -1,9 +1,12 @@
 plugins {
     id("com.android.application")
-    id("org.jetbrains.kotlin.android") // 💎 التعديل الصحيح هنا
     id("dev.flutter.flutter-gradle-plugin")
 }
 
+// فرض تطبيق إضافة كوتلن عبر الكلاس باث الخارجي مباشرة لتفادي التعارض
+apply(plugin = "org.jetbrains.kotlin.android")
+
+// اترك باقي محتويات الملف بالأسفل (android { ... } وغيرها) كما هي تماماً دون تغيير
 val mediahubVersionName: String = providers.gradleProperty("mediahub.versionName")
     .getOrElse("0.1.0")
 val mediahubVersionCode: String = providers.gradleProperty("mediahub.versionCode")
