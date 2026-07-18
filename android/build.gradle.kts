@@ -1,5 +1,9 @@
-// Top-level build file – plugins declared per-module in app/build.gradle.kts.
+buildscript {
+    dependencies {
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:2.0.0")
+    }
+}
+
 plugins {
     alias(libs.plugins.android.application) apply false
-    id("org.jetbrains.kotlin.android") apply false
 }
