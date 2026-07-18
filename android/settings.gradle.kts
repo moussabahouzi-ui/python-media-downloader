@@ -22,12 +22,12 @@ pluginManagement {
 
 plugins {
     id("dev.flutter.flutter-plugin-loader") version "1.0.0"
-    id("com.android.application") version "8.5.0" apply false
+    // 💎 التحديث هنا: الترقية إلى الإصدار 8.7.0 المتوافق تماماً مع فلاتر والـ Gradle الحالي
+    id("com.android.application") version "8.7.0" apply false
     id("org.jetbrains.kotlin.android") version "2.0.0" apply false
 }
 
 dependencyResolutionManagement {
-    // 💎 هنا التعديل الصحيح والقياسي المقبول في نظام Gradle
     repositoriesMode.set(RepositoriesMode.PREFER_PROJECT)
     repositories {
         google()
