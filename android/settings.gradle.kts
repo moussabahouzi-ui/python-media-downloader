@@ -27,7 +27,8 @@ plugins {
 }
 
 dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.PRESERVE_SETTINGS)
+    // 💎 هنا التعديل الصحيح والقياسي المقبول في نظام Gradle
+    repositoriesMode.set(RepositoriesMode.PREFER_PROJECT)
     repositories {
         google()
         mavenCentral()
