@@ -1,0 +1,16 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!--
+        Base theme for MediaHub. Flutter owns the actual Material 3 theming
+        inside the engine view; this theme only governs the launch screen and
+        window background before Flutter attaches.
+
+        Parent uses Theme.AppCompat (available via androidx.appcompat) rather
+        than Theme.Material3 (which requires the Material Components library).
+    -->
+    <style name="Theme.MediaHub" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="android:windowBackground">@color/brand_surface_light</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowLayoutInDisplayCutoutMode" tools:targetApi="o_mr1">shortEdges</item>
+    </style>
+</resources>

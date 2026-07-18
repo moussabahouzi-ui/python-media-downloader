@@ -1,0 +1,9 @@
+<resources>
+    <!-- Brand seed used as the fallback when Material You is unavailable. -->
+    <color name="brand_seed">#FFE8590C</color>
+    <color name="brand_primary_light">#FF9C3618</color>
+    <color name="brand_primary_dark">#FFFFB698</color>
+    <color name="brand_surface_light">#FFFBF8F4</color>
+    <color name="brand_surface_dark">#FF171311</color>
+    <color name="ic_launcher_background">#FFE8590C</color>
+</resources>

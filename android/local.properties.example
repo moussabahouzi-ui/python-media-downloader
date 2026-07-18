@@ -1,0 +1,9 @@
+# Copy this file to `local.properties` and set the Flutter SDK path.
+# The Flutter SDK location is required for the Android build to resolve
+# io.flutter.* classes and apply the Flutter Gradle Plugin.
+#
+# Example:
+#   flutter.sdk=/home/your-user/flutter
+#
+# On macOS:
+#   flutter.sdk=/Users/your-user/development/flutter
