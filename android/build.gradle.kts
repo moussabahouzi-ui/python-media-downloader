@@ -4,12 +4,11 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        // المحافظة على إصدار كوتلن المتوافق الذي أصلحناه سابقاً
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:2.0.0")
     }
 }
 
 plugins {
-    // فرض استخدام إصدار مستقر وآمن من أدوات أندرويد لتجنب أزمة AGP 9+
-    id("com.android.application") version "8.5.0" apply false
+    // 💎 التطابق التام: تحديث الإصدار إلى 8.7.0 ليتزامن مع ملف الـ settings وينتهي التعارض
+    id("com.android.application") version "8.7.0" apply false
 }
