@@ -1,0 +1,13 @@
+# MediaHub embedded Python engine — runtime dependencies.
+# Pinned to compatible ranges; resolved at packaging time per ABI.
+yt-dlp>=2024.8.6
+gallery-dl>=1.27.5
+instaloader>=4.13
+ffmpeg-python>=0.2.0
+pydantic>=2.7.0
+
+# --- Dev / test (not shipped in the APK) ---
+pytest>=8.2
+pytest-asyncio>=0.23
+ruff>=0.5.0
+mypy>=1.10

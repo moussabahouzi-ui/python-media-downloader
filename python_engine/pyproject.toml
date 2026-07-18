@@ -1,0 +1,65 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mediahub-engine"
+version = "0.1.0"
+description = "Embedded media processing engine for MediaHub (yt-dlp / gallery-dl / Instaloader / FFmpeg)."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "Proprietary" }
+authors = [{ name = "MediaHub Contributors" }]
+dependencies = [
+    "yt-dlp>=2024.8.6",
+    "gallery-dl>=1.27.5",
+    "instaloader>=4.13",
+    "ffmpeg-python>=0.2.0",
+    "pydantic>=2.7.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.2",
+    "pytest-asyncio>=0.23",
+    "ruff>=0.5.0",
+    "mypy>=1.10",
+]
+
+[project.scripts]
+mediahub-engine = "mediahub_engine.__main__:main"
+
+[tool.setuptools.packages.find]
+include = ["mediahub_engine*"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = [
+    "E", "F", "W",   # pycodestyle / pyflakes
+    "I",             # isort
+    "B",             # bugbear
+    "UP",            # pyupgrade
+    "C4",            # comprehensions
+    "SIM",           # simplify
+    "RUF",           # ruff-specific
+]
+ignore = [
+    "E501",          # line length handled by formatter
+    "B008",          # function call in default argument (used for DI)
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["B011"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+addopts = "-ra"
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+ignore_missing_imports = true
