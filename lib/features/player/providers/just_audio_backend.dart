@@ -15,7 +15,7 @@ class JustAudioBackend implements PlayerBackend {
 
   final AudioPlayer _player;
   StreamSubscription<Duration>? _posSub;
-  StreamSubscription<Duration>? _durSub;
+  StreamSubscription<Duration?>? _durSub;
   StreamSubscription<void>? _compSub;
 
   final _positionController = StreamController<Duration>.broadcast();
