@@ -40,7 +40,8 @@ sealed class Failure {
 
 /// The bridge versions on the two sides do not match.
 final class BridgeVersionMismatchFailure extends Failure {
-  const BridgeVersionMismatchFailure({
+  // 💎 تم إزالة const من هنا لأن الخريطة بالأسفل تحتوي على بيانات متغيرة
+  BridgeVersionMismatchFailure({
     required int expected,
     required int actual,
   }) : super(
@@ -67,7 +68,8 @@ final class EngineTimeoutFailure extends Failure {
 
 /// No provider matched the supplied URL.
 final class ProviderNotFoundFailure extends Failure {
-  const ProviderNotFoundFailure(String url)
+  // 💎 تم إزالة const من هنا
+  ProviderNotFoundFailure(String url)
       : super(
           'No provider supports this URL',
           code: 'PROVIDER_NOT_FOUND',
@@ -77,7 +79,8 @@ final class ProviderNotFoundFailure extends Failure {
 
 /// The requested method does not exist on the bridge.
 final class UnknownMethodFailure extends Failure {
-  const UnknownMethodFailure(String method)
+  // 💎 تم إزالة const من هنا
+  UnknownMethodFailure(String method)
       : super(
           'Unknown bridge method',
           code: 'UNKNOWN_METHOD',
@@ -87,7 +90,8 @@ final class UnknownMethodFailure extends Failure {
 
 /// Parameters failed validation.
 final class InvalidParamsFailure extends Failure {
-  const InvalidParamsFailure(String detail)
+  // 💎 تم إزالة const من هنا
+  InvalidParamsFailure(String detail)
       : super(
           'Invalid parameters',
           code: 'INVALID_PARAMS',
@@ -105,7 +109,6 @@ final class StorageFailure extends Failure {
   const StorageFailure(String message, {Map<String, Object?>? details})
       : super(message, code: 'STORAGE', details: details);
 }
-
 /// Catch-all for unexpected internal errors.
 final class InternalFailure extends Failure {
   const InternalFailure(String message, {Map<String, Object?>? details})
