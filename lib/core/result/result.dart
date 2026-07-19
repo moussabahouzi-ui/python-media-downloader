@@ -26,10 +26,16 @@ sealed class Result<T> {
   bool get isFailure => this is FailureResult<T>;
 
   /// The contained value, or `null` on failure.
-  T? get valueOrNull => fold((v) => v, (_) => null);
+  T? get valueOrNull => fold(
+        onSuccess: (v) => v,
+        onFailure: (_) => null,
+      );
 
   /// The contained failure, or `null` on success.
-  Failure? get failureOrNull => fold((_) => null, (f) => f);
+  Failure? get failureOrNull => fold(
+        onSuccess: (_) => null,
+        onFailure: (f) => f,
+      );
 
   /// Folds over the two branches.
   R fold<R>({
@@ -44,22 +50,32 @@ sealed class Result<T> {
   }
 
   /// Maps a successful value, leaving failures untouched.
-  Result<R> map<R>(R Function(T value) fn) =>
-      fold((v) => Result.success(fn(v)), Result.failure);
+  Result<R> map<R>(R Function(T value) fn) => fold(
+        onSuccess: (v) => Result.success(fn(v)),
+        onFailure: Result.failure,
+      );
 
   /// Flat-maps a successful value.
-  Result<R> flatMap<R>(Result<R> Function(T value) fn) =>
-      fold(fn, Result.failure);
+  Result<R> flatMap<R>(Result<R> Function(T value) fn) => fold(
+        onSuccess: fn,
+        onFailure: Result.failure,
+      );
 
-  /// Runs [onSuccess] on success and returns self.
-  Result<T> onSuccess(void Function(T value) onSuccess) {
-    fold((v) => onSuccess(v), (_) {});
+  /// Runs [action] on success and returns self.
+  Result<T> onSuccess(void Function(T value) action) {
+    fold(
+      onSuccess: action,
+      onFailure: (_) {},
+    );
     return this;
   }
 
-  /// Runs [onFailure] on failure and returns self.
-  Result<T> onFailure(void Function(Failure failure) onFailure) {
-    fold((_) {}, onFailure);
+  /// Runs [action] on failure and returns self.
+  Result<T> onFailure(void Function(Failure failure) action) {
+    fold(
+      onSuccess: (_) {},
+      onFailure: action,
+    );
     return this;
   }
 }
