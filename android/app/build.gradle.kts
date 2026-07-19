@@ -15,7 +15,8 @@ val mediahubVersionCode: String = providers.gradleProperty("mediahub.versionCode
 
 android {
     namespace = "com.mediahub.app"
-    compileSdk = 34
+    compileSdk = 36 // 💎 التحديث هنا
+    ndkVersion = "28.2.13676358"
 
     defaultConfig {
         applicationId = "com.mediahub.app"
