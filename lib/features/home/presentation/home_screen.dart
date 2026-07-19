@@ -326,8 +326,8 @@ final FutureProvider<EngineVersionInfo> _engineVersionProvider =
     FutureProvider<EngineVersionInfo>(
   (ref) => ref.watch(engineServiceProvider).version().then(
         (result) => result.fold(
-          (failure) => throw failure,
-          (data) => data,
+          onSuccess: (data) => data,
+          onFailure: (failure) => throw failure,
         ),
       ),
   name: '_engineVersionProvider',
