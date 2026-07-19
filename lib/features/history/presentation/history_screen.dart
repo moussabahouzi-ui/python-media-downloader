@@ -27,8 +27,8 @@ class _HistoryScreenState extends ConsumerState<HistoryScreen> {
   void _load() {
     final engine = ref.read(engineServiceProvider);
     _historyFuture = engine.listHistory().then((result) => result.fold(
-      (failure) => throw Exception('Failed to load history: $failure'),
-      (data) => data,
+      onSuccess: (history) => history,
+      onFailure: (failure) => throw failure,
     ));
     _statsFuture = engine.historyStats().then((result) => result.fold(
       (failure) => throw Exception('Failed to load stats: $failure'),
