@@ -50,11 +50,13 @@ class PlatformEngineMethodChannel implements EngineMethodChannel {
       final map = Map<String, Object?>.from(result ?? const {});
       final ok = map['ok'] as bool? ?? false;
       if (!ok) {
+        // Safely extract error data by casting to Map first
+        final errorData = map['error'] as Map<Object?, Object?>?;
         throw BridgeException(
-          code: (map['error']?['code'] as String?) ?? 'INTERNAL',
-          message: (map['error']?['message'] as String?) ?? 'Unknown error',
-          details: map['error']?['details'] is Map
-              ? Map<String, Object?>.from(map['error']!['details'] as Map)
+          code: (errorData?['code'] as String?) ?? 'INTERNAL',
+          message: (errorData?['message'] as String?) ?? 'Unknown error',
+          details: errorData?['details'] is Map
+              ? Map<String, Object?>.from(errorData!['details'] as Map)
               : null,
         );
       }
